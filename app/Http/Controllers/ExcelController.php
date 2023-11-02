@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
 {
-
     public function verTabla(Request $request)
     {
 

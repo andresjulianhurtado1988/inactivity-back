@@ -24,6 +24,10 @@ class DatabaseSeeder extends Seeder
             TiendasSeeder::class,
             VendedoresSeeder::class,
             VentasSeeder::class,
+        //    Cuentas::class,
+          //  NumCuentas::class,
+            PruebaConceptos::class,
+            PruebaDescripcionCuenta::class
         ]);
     }
 }
