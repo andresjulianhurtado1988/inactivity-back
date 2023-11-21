@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Cuentas extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_prueba_descripcion_cuenta';
+    protected $table = 'tbl_ctb_puc_cuentas_agrupadas';
 }
