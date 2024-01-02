@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InactivyController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\FileController;
 
 
 /*
@@ -42,4 +43,4 @@ Route::post('/verTablaCuentas', [CuentasController::class, 'verTablaCuentas'])->
 
 Route::post('/detalleConceptos', [CuentasController::class, 'detalleConceptos'])->name('detalleConceptos');
 
-
+Route::post('/descargarArchivo', [FileController::class, 'descargarArchivo'])->name('descargarArchivo');
