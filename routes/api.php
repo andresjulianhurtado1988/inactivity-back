@@ -43,4 +43,4 @@ Route::post('/verTablaCuentas', [CuentasController::class, 'verTablaCuentas'])->
 
 Route::post('/detalleConceptos', [CuentasController::class, 'detalleConceptos'])->name('detalleConceptos');
 
-Route::post('/descargarArchivo', [FileController::class, 'descargarArchivo'])->name('descargarArchivo');
+Route::post('/guardarFecha', [FileController::class, 'guardarFecha'])->name('guardarFecha');

@@ -4,30 +4,60 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\FechaSave;
 
 class FileController extends Controller
 {
-    public function descargarArchivo()
+    public function guardarFecha(Request $request)
     {
 
-        $nombre_archivo = 'C:\Users\Equipo_03\Desktop\prueba\archivoPrueba.txt';
+        $json = $request->input('json', null);
+        $params_array = json_decode($json, true);
 
-        if (file_exists($nombre_archivo)) {
-            $otro_contenido = ' dos punto cero';
-            $contenido = file_get_contents($nombre_archivo);
-            $nuevo_contenido = $contenido . $otro_contenido;
+        $joyeria = $params_array['joyeria'];
+        $fecha = $params_array['fecha'];
+
+
+        $registro = FechaSave::where([['joyeria_id', $joyeria], ['fecha_modificacion', $fecha]])->first();
+
+        if ($registro) {
+
+            $fecha = FechaSave::where('joyeria_id', $joyeria)->update(
+                $params_array
+            );
+
+            $data = array(
+                'status' => 'success',
+                'code' => 200,
+                'resp' => true
+            );
+
         } else {
-            $nuevo_contenido = 'información que contiene el archivo de prueba';
+            $fechaSave = new FechaSave();
+            $fechaSave->joyeria_id = $joyeria;
+            $fechaSave->fecha_modificacion = $fecha;
+            $fechaSave->save();
+
+            $data = array(
+                'status' => 'success',
+                'code' => 200,
+                'resp' => false
+            );
         }
 
-        return Storage::disk('public')->put('archivoPrueba.txt', $nuevo_contenido);
 
+        // $inactividad = new FechaSave();
+        // $inactividad->inactivity = 0;
+        // $inactividad->save();
 
-        //    foreach ($arrayPrueba as $open) {
-        // return Storage::disk('public')->put('archivoPruebba.txt', $nuevo_contenido);
-        //     $hoursOpen = Storage::disk('public')->put('hours.txt', "$request->open");
-        //   }
+        // $data = array(
+        //     'status' => 'success',
+        //     'code' => 200,
+        //     'inactividad' => $inactividad
+        // );
+
+        // devolver resultado
+        // return response()->json($data, $data['code']);
 
     }
 }
