@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InactivyController;
 use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\FileController;
 
 
@@ -32,15 +31,5 @@ Route::post('/createExcel', [ExcelController::class, 'createExcel'])->name('crea
 Route::get('/verTiendas', [ExcelController::class, 'verTiendas'])->name('verTiendas');
 
 Route::post('/verEmpleados', [ExcelController::class, 'verEmpleados'])->name('verEmpleados');
-
-
-Route::get('/verConceptos', [CuentasController::class, 'verConceptos'])->name('verConceptos');
-
-Route::get('/verCuentas', [CuentasController::class, 'verCuentas'])->name('verCuentas');
-Route::post('/concepto_cuenta', [CuentasController::class, 'concepto_cuenta'])->name('concepto_cuenta');
-
-Route::post('/verTablaCuentas', [CuentasController::class, 'verTablaCuentas'])->name('verTablaCuentas');
-
-Route::post('/detalleConceptos', [CuentasController::class, 'detalleConceptos'])->name('detalleConceptos');
 
 Route::post('/guardarFecha', [FileController::class, 'guardarFecha'])->name('guardarFecha');

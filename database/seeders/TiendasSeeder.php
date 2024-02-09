@@ -36,9 +36,7 @@ class TiendasSeeder extends Seeder
                 array(
                     'nombre' => 'Villa Lía',
                 ),
-                array(
-                    'nombre' => 'Narnia',
-                ),
+
             )
         );
     }
